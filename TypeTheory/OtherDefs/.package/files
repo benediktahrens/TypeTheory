@@ -13,3 +13,5 @@ DM.v
 TypeCat_to_CwF_Pitts.v
 TypeCat_to_DM.v
 TypeCat.v
+TypeCat_alt.v
+
