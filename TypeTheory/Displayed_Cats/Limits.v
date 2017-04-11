@@ -68,12 +68,39 @@ Context {C : Precategory}
         (J : graph)
         (X : Lims_of_shape J C).
 
+Notation π := (pr1_precat D).
+
+Definition total_limits : Lims_of_shape J (total_precat D).
+Proof.
+  intro d.
+  set (πd := mapdiagram π d).
+  set (LL := X πd).
+  set (L := pr1 LL).
+  set (c := pr1 L).
+  set (isL := pr2 LL). cbn in isL.
+  set (XR := H _ d _ _ isL).
+  unfold creates_limit in XR.
+  cbn.
+  use (mk_LimCone _ _ _ (pr2 XR)).
+Defined.
+
 Lemma pr1_preserves_limit (d : diagram J (total_precat D)) 
-  (x : total_precat D) (CC : cone d x) : preserves_limit (pr1_precat D) _ x CC. 
+  (x : total_precat D) (CC : cone d x) : preserves_limit π _ x CC. 
 Proof.
   intro H1.
+  set (XR := X (mapdiagram π d)).
+  set (L := pr1 XR).
+  set (isL := pr2 XR). cbn in isL.
+  set (foo := H _ _ _ _ isL).
+  unfold creates_limit in foo.
+  cbn in foo.
+  unfold Lims_of_shape in X.
+  set (R := mapdiagram π d).
+  specialize (X R).
+  destruct X as [[c L] LL]. cbn in *.
+  set (XR:= H
   cbn.
-
+  
 
 
            
