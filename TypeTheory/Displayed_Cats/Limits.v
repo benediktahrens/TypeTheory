@@ -59,6 +59,23 @@ Definition creates_limits {C : Precategory} (D : disp_precat C) : UU
   creates_limit _ _ _ isL.
 
 End Creates_Limits.
+
+Section creates_preserves.
+
+Context {C : Precategory}
+        (D : disp_precat C)
+        (H : creates_limits D)
+        (J : graph)
+        (X : Lims_of_shape J C).
+
+Lemma pr1_preserves_limit (d : diagram J (total_precat D)) 
+  (x : total_precat D) (CC : cone d x) : preserves_limit (pr1_precat D) _ x CC. 
+Proof.
+  intro H1.
+  cbn.
+
+
+
            
 
 Section classical_def_of_creating_limits.
@@ -81,6 +98,7 @@ Definition c_creates_limit (J : graph) (D : diagram J A)
 
 End classical_def_of_creating_limits.
 
+(*
 Lemma impl (C : Precategory) (D : disp_precat C) 
       {J : graph} (F : diagram J (total_precat D))
       {c : C} 
@@ -135,5 +153,9 @@ Proof.
         
       simpl.
       cbn.
+*)
+
+
+
 
     (* *)
