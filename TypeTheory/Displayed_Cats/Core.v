@@ -1208,6 +1208,18 @@ Definition section_disp_id {C} {D : disp_cat C} (F : section_disp D)
 Definition section_disp_comp {C} {D : disp_cat C} (F : section_disp D)
   := pr2 (pr2 F).
 
+
+(** *** Category of sections *)
+
+Section cat_of_sections.
+
+Context {C : category} (D : disp_cat C).
+
+Definition section_disp_mor (a b : section_disp_data D) : UU :=
+  ∑ (h : ∏ c, a c -->[identity _ ]  b c),
+  ∏ c c' (f : c --> c'), h c ;; # b f = #a f ;; h c'.
+
+
 End Sections.
 
 (** With sections defined, we can now define _lifts_ to a displayed category of a functor into the base. *)
